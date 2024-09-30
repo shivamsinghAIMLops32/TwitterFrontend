@@ -7,8 +7,8 @@ import { BsEnvelope } from "react-icons/bs";
 import { BiBookmark } from "react-icons/bi";
 import { BiUser } from "react-icons/bi";
 import React from "react";
-import FeedCard from "@/components";
 import { MdMoreHoriz } from "react-icons/md";
+import FeedCard from "@/components/FeedCard";
 
 interface TwitterSideBarButton {
   title: string;
