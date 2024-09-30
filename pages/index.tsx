@@ -6,22 +6,9 @@ import { BsBell } from "react-icons/bs";
 import { BsEnvelope } from "react-icons/bs";
 import { BiBookmark } from "react-icons/bi";
 import { BiUser } from "react-icons/bi";
-
-import React, { useLayoutEffect } from "react";
-import { title } from "process";
+import React from "react";
 import FeedCard from "@/components";
 import { MdMoreHoriz } from "react-icons/md";
-
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
 
 interface TwitterSideBarButton {
   title: string;
@@ -29,75 +16,60 @@ interface TwitterSideBarButton {
 }
 
 const sideBarMenu: TwitterSideBarButton[] = [
-  {
-    title: "Home",
-    icon: <BiHomeCircle />,
-  },
-  {
-    title: "Explore",
-    icon: <BiHash />,
-  },
-  {
-    title: "Notifications",
-    icon: <BsBell />,
-  },
-  {
-    title: "Messages",
-    icon: <BsEnvelope />,
-  },
-  {
-    title: "Bookmarks",
-    icon: <BiBookmark />,
-  },
-  {
-    title:"TwitterBlue",
-    icon: <BiMoney/>
-  },
-  {
-    title:"User",
-    icon:<BiUser />
-  },
-  {
-    title:"More Options",
-    icon:<MdMoreHoriz />
-  }
+  { title: "Home", icon: <BiHomeCircle /> },
+  { title: "Explore", icon: <BiHash /> },
+  { title: "Notifications", icon: <BsBell /> },
+  { title: "Messages", icon: <BsEnvelope /> },
+  { title: "Bookmarks", icon: <BiBookmark /> },
+  { title: "Twitter Blue", icon: <BiMoney /> },
+  { title: "User", icon: <BiUser /> },
+  { title: "More Options", icon: <MdMoreHoriz /> },
 ];
 
 export default function Home() {
   return (
-    <div>
-      <div className="grid grid-cols-12 h-screen w-screen px-56">
-        <div className=" col-span-3  pt-1  ">
-          <div className="text-2xl h-fit hover:bg-gray-800 rounded-full p-2 cursor-pointer transition-all">
+    <div className="bg-black text-white">
+      <div className="grid grid-cols-12 h-screen w-screen px-16">
+        {/* Sidebar */}
+        <div className="col-span-3 pt-4">
+          <div className="text-3xl h-fit hover:bg-gray-800 rounded-full p-2 cursor-pointer transition-all">
             <BsTwitter />
           </div>
-          <div className="mt-4 text-2xl  pr-4">
+          <div className="mt-6 text-xl pr-4">
             <ul>
               {sideBarMenu.map((item) => (
-                <li className="flex justify-start items-center gap-4 hover:bg-gray-800 rounded-full px-3 py-2 w-fit cursor-pointer mt-2"
-                key= {item.title}>
-                  <span className="text-3xl">{item.icon}</span>
-                  <span>{item.title}</span>
+                <li
+                  className="flex justify-start items-center gap-4 hover:bg-gray-700 rounded-full px-4 py-3 transition-all cursor-pointer mt-2 ml-2"
+                  key={item.title}
+                >
+                  <span className="text-2xl">{item.icon}</span>
+                  <span className="font-semibold">{item.title}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-5 px-3">
-            <button className="bg-[#1d9bf0] px-4 py-2 font-semibold rounded-full w-full  text-lg">Tweet</button>
+            <div className="mt-6">
+              <button className="bg-[#1d9bf0] hover:bg-[#1a8cd8] transition-all px-4 py-2 font-bold rounded-full w-full text-lg text-white shadow-md">
+                Tweet
+              </button>
             </div>
           </div>
         </div>
-        <div className="col-span-5 border-r-[1px] border-l-[1px]  border-gray-600  h-screen overflow-scroll">
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
-          <FeedCard/>
+
+        {/* Feed Section */}
+        <div className="col-span-5 border-x border-gray-600 h-screen overflow-y-auto">
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
         </div>
-        <div className="col-span-3 "></div>
+
+        {/* Right Sidebar (can add more content here later) */}
+        <div className="col-span-3"></div>
       </div>
     </div>
   );
